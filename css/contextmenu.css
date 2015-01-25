@@ -1,0 +1,80 @@
+/*
+*******************************
+**** Contextmenu container  ***
+*******************************
+*/
+
+.cm_container {
+	font: 9pt "Helvetica", "Trebuchet MS",Tahoma,Arial,Verdana, monospace;
+	color: #777; 
+	display:inline-block;
+	border-radius: 3px;
+	cursor: default;
+	padding: 5px;
+    background-color: #fff;
+	
+	position: absolute;
+	
+	min-width: 200px;
+	min-height: 20px;
+	
+	 box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.26);
+	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	 
+}
+
+.cm_element, .cm_element_hover{
+	padding:5px;
+	white-space: nowrap;
+}
+
+.cm_element_hover{
+	background-color: #FbFbFb;
+	box-shadow: 1px 1px 3px 1px rgba(0,0,0, 0.2) inset;
+}
+
+.cm_text{
+	
+	white-space: nowrap;
+	display:inline-block;
+	line-height: 25px;
+	display:inline-block;
+	vertical-align:top;
+	margin-right: 20px
+}
+
+
+.cm_icon{
+	width : 16px;
+	height : 16px;
+	margin: 3px 15px 2px 5px; 
+	display:inline-block;
+	
+}
+
+
+
+.cm_arrow{ 
+	white-space: nowrap; 
+	vertical-align:top;
+	display: inline-block;
+	height:10px;
+	width:5px; 
+	position:absolute;
+	right:10px; 
+	background:url("../res/ico_arrowright.png") no-repeat;
+	margin:8px 5px 0px 15px; 
+}  
+
+
+
+.cm_separator{
+	width: 100%; 
+	height: 1px;
+	background-color: #ddd;
+	margin: 2px 2px 5px 0px;
+	display:inline-block;	
+}

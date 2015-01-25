@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+	<title>FormJS</title>
+	
+	<script language="javascript" src="js/utils.js" ></script> 
+	<script language="javascript" src="js/toolbar.js" ></script> 
+	<script language="javascript" src="js/contextmenu.js" ></script> 
+	
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/toolbar.css" />
+	<link rel="stylesheet" type="text/css" href="css/contextmenu.css" />
+	
+	<style>
+		#test_div{
+			margin:3px;
+			border: 1px solid rgb(204, 204, 204);
+			
+			background: #f4f4f4;
+			background: -moz-linear-gradient(top, #f4f4f4 0%, #f7f7f7 50%, #efefef 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(50%,#f7f7f7), color-stop(100%,#efefef));
+			background: -webkit-linear-gradient(top, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
+			background: -o-linear-gradient(top, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
+			background: -ms-linear-gradient(top, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
+			background: linear-gradient(to bottom, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#efefef',GradientType=0 );
+
+		}
+	</style>
+</head>
+<body>
+
+<div id="test_div"></div>
+
+
+<script>
+document.body.onload = function(){
+	//Get the div element
+	var div = document.getElementById("test_div");
+
+	var submenu2 = new Contextmenu();
+	submenu2.addElement( "res/icons/ico_add.png", "Add", function(){
+		alert("Added!");
+	});
+	submenu2.addSeparator();
+	submenu2.addElement( "res/icons/ico_arrow_down.png", "Move Down", function(){
+		alert("Moved Down!");
+	});
+	
+	var submenu = new Contextmenu();
+	submenu.addElement( "res/icons/ico_file.png", "Show Document", function(){
+		
+	});
+	
+	var mainmenu = new Contextmenu();
+	
+	mainmenu.addElement( "res/icons/ico_newfile.png", "View file",function(){
+	
+	}, submenu);
+	mainmenu.addElement( "res/icons/ico_paste.png", "Paste", function(){
+	
+	});
+	mainmenu.addElement( "res/icons/ico_move.png", "Move Bone", function(){
+	
+	});
+	mainmenu.addElement( "res/icons/ico_length.png", "Scale Bone", function(){
+	
+	});
+	
+	mainmenu.addElement("res/icons/ico_copy.png", "Copy", function(){
+	
+	});
+	
+	//Create a treeview
+	var toolbar = new Toolbar();
+	 
+	
+	//New file 
+	
+	toolbar.addElement(
+		"", "File",
+		null,
+		mainmenu
+	);
+	
+		
+	//Load
+	toolbar.addElement(
+		"res/icons/ico_folder.png",
+		"Load",
+		function(){}
+	);
+		
+	//Separator
+	toolbar.addSeparator();
+	
+	
+	//Arrow
+	var subMenu = {a:true}
+	toolbar.addElement(
+		"res/icons/ico_save.png",
+		"Save",
+		function(){ alert("Clicked Save!");},
+		submenu2
+	);
+	
+	
+	//Add
+	toolbar.addElement(
+		"res/icons/ico_selection.png",
+		"Select",
+		function(){}
+	);
+	
+	toolbar.addSeparator();
+	
+	
+	//only icons
+	toolbar.addElement( "res/icons/ico_rotate.png", "",
+		function(){}
+	);
+	toolbar.addElement( "res/icons/ico_folder_other.png", "",
+		function(){}
+	);
+	
+	
+	div.appendChild(toolbar.DOM);
+}
+</script>
+
+</body>
+</html>
