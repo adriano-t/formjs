@@ -4,6 +4,24 @@
 *************************
 */
 
+.tb_div{
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	
+	margin:3px;
+	border: 1px solid rgb(204, 204, 204);
+	
+	background: #f4f4f4;
+	background: -moz-linear-gradient(top, #f4f4f4 0%, #f7f7f7 50%, #efefef 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(50%,#f7f7f7), color-stop(100%,#efefef));
+	background: -webkit-linear-gradient(top, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
+	background: -o-linear-gradient(top, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
+	background: -ms-linear-gradient(top, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
+	background: linear-gradient(to bottom, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#efefef',GradientType=0 );
+
+}
 .tb_element, .tb_element_hover, .tb_element_selected{
 	font: 9pt "Helvetica", "Trebuchet MS",Tahoma,Arial,Verdana, monospace;
 	color: #555;

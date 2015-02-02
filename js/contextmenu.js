@@ -1,7 +1,5 @@
 
 function Contextmenu(){
-
-
 	this.formType = "contextmenu";
 	this.elements = [];
 	this.DOM = document.createElement("div");

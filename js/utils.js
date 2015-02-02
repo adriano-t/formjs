@@ -21,6 +21,17 @@ FormUtils = {
 						 document.documentElement.scrollLeft:document.body.scrollLeft;
 		return {x: rect.left+scrollLeft, y: rect.top+scrollTop};
 		
+	},
+	
+	isChild : function(parent, child) {
+		var node = child.parentNode;
+		while (node != null) {
+			if (node == parent) {
+				return true;
+			}
+			node = node.parentNode;
+		}
+		return false;
 	}
 }
 

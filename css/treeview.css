@@ -1,0 +1,66 @@
+
+.tv_div{
+	overflow: auto;
+	font: 9pt "Helvetica", "Trebuchet MS",Tahoma,Arial,Verdana, monospace;
+	color: #444; 
+	cursor: default;
+	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.tv_icon{
+	width:16px;
+	height:16px;
+	display:inline-block;
+}
+
+.tv_text{
+	padding-left: 5px;
+	line-height: 21px;
+	vertical-align: top;
+	display:inline-block;
+}	
+
+.tv_li, .tv_li_over, .tv_li_selected{
+	margin-left:2px;
+	padding: 2px 2px 0px 1px;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	white-space: nowrap;
+	display:inline-block;
+}
+
+.tv_li_over{ 
+	background-color: rgb(229, 243, 251);
+	border-color: rgb(112, 192, 231);
+}
+.tv_li_selected{ 
+	background-color: rgb(203, 232, 246);
+	border-color: rgb(38, 160, 218);
+}	
+
+.tv_empty{
+	margin-left:10px;
+}
+.tv_arrow_closed, .tv_arrow_open{ 
+	vertical-align:top;
+	display: inline-block;
+	height:10px;
+	width:5px; 
+	padding:5px 6px 0px 8px; 
+}
+.tv_arrow_closed{
+	background:url("../res/ico_arrowright.png") no-repeat;
+	background-position: 50% 50%;
+}
+.tv_arrow_open{
+	background:url("../res/ico_arrowdown.png") no-repeat;
+	background-position: 50% 50%;
+}
+
+
+.tv_ul{
+	margin-left:15px;
+}

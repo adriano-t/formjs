@@ -6,27 +6,13 @@
 	<script language="javascript" src="js/utils.js" ></script> 
 	<script language="javascript" src="js/toolbar.js" ></script> 
 	<script language="javascript" src="js/contextmenu.js" ></script> 
+	<script language="javascript" src="js/treeview.js" ></script> 
 	
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="css/toolbar.css" />
 	<link rel="stylesheet" type="text/css" href="css/contextmenu.css" />
-	
-	<style>
-		#test_div{
-			margin:3px;
-			border: 1px solid rgb(204, 204, 204);
-			
-			background: #f4f4f4;
-			background: -moz-linear-gradient(top, #f4f4f4 0%, #f7f7f7 50%, #efefef 100%);
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(50%,#f7f7f7), color-stop(100%,#efefef));
-			background: -webkit-linear-gradient(top, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
-			background: -o-linear-gradient(top, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
-			background: -ms-linear-gradient(top, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
-			background: linear-gradient(to bottom, #f4f4f4 0%,#f7f7f7 50%,#efefef 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#efefef',GradientType=0 );
-
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/treeview.css" />
+	 
 </head>
 <body>
 
@@ -123,9 +109,43 @@ document.body.onload = function(){
 		function(){}
 	);
 	
-	
 	div.appendChild(toolbar.DOM);
+	
+	tree = new Treeview();
+	
+	images = ["res/icons/ico_file.png", "res/icons/ico_newfile.png", "res/icons/ico_paste.png"];
+	names = ["spr_scarpallaccia", "spr_antani",  "spr_tapioco",  "spr_tarapia",  "spr_prematurata",  "spr_allacciascarpa"];
+	folders = ["Animations", "Sprites",  "Rooms",  "Backgrounds",  "Sounds",  "Settings"];
+	groups = ["Group", "Player",  "Glare", "Old",  "Temp",  "Mascetti"];
+	
+	for(var i=0; i< 5; i++){
+		var node = new TreeNode(choose(folders), "res/icons/ico_folder.png");
+		
+		for(var j=0; j< 5; j++){
+			var node2 = new TreeNode(choose(groups), "res/icons/ico_folder_other.png", true);
+			
+			for(var k=0; k< 5; k++){
+				var node3 = new TreeNode(choose(names), choose(images) , true, mainmenu);
+				node2.addChild(node3);
+			}
+		
+			node.addChild(node2);
+		}
+		tree.root.addChild(node);
+		node.locked = true;
+	}
+	
+	div.appendChild(tree.DOM);
+	tree.populate();
+	tree.DOM.style.width = "150px";
+	tree.DOM.style.height = "300px";
 }
+
+
+function choose(elements){
+	return elements[Math.floor(Math.random() *  elements.length)];
+}
+
 </script>
 
 </body>

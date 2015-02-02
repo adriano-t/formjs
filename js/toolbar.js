@@ -3,6 +3,7 @@ function Toolbar(){
 	this.formType = "toolbar";
 	this.elements = [];
 	this.DOM = document.createElement("div");
+	this.DOM.className = "tb_div";
 	
 	this.selectedElement = undefined;
 	this.waitNextClick = false;
