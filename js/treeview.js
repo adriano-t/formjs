@@ -91,7 +91,7 @@ Treeview.prototype.recursiveInstance = function(node){
 				var dragged = this.node.treeview.dragged; 
 				var target = event.target.node;  
 				//check HierarchyRequestError
-				if(dragged != target && !FormUtils.isChild(dragged.ul, target.li)){
+				if(dragged != target && !FormJS.isChild(dragged.ul, target.li)){
 					if(dragged.getParentLocked() == target.getParentLocked()){
 						dragged.parent.removeChild(dragged);
 						
@@ -272,9 +272,7 @@ TreeNode.prototype.setOpen = function(open){
 }
 
 
-TreeNode.prototype.updateUL = function(hasChilds){
-	//BUG HERE!
-	console.log(this.parent);
+TreeNode.prototype.updateUL = function(hasChilds){ 
 	var parent = this.parent.ul;
 	
 	if(this.arrowSpan)

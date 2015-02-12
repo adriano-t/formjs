@@ -49,10 +49,10 @@ Contextmenu.prototype.close = function(recursiveUp, recursiveDown){
 }
 
 Contextmenu.prototype.resetSize = function(){
-	var pos = FormUtils.getElementPosition(this.DOM);
+	var pos = FormJS.getElementPosition(this.DOM);
 	if(pos.x < 0 || pos.x + this.DOM.offsetWidth > window.innerWidth ){
 		if(this.parent){
-			var parentX = FormUtils.getElementPosition(this.parent.DOM).x;
+			var parentX = FormJS.getElementPosition(this.parent.DOM).x;
 			
 			var posLeft = parentX - this.DOM.offsetWidth - 5;
 			var posRight = parentX + this.DOM.offsetWidth + 35;
@@ -156,7 +156,7 @@ Contextmenu.prototype.addElement = function(icon, text, callback, contextmenu){
 			if(contextmenu){
 				menu.submenu = contextmenu;
 				contextmenu.parent = menu;
-				contextmenu.show(FormUtils.getElementPosition(menu.DOM).x + menu.DOM.offsetWidth , FormUtils.getElementPosition(this).y);
+				contextmenu.show(FormJS.getElementPosition(menu.DOM).x + menu.DOM.offsetWidth , FormJS.getElementPosition(this).y);
 				
 			}
 				

@@ -1,0 +1,75 @@
+
+.wnd_container{
+	font: 9pt "Helvetica", "Trebuchet MS",Tahoma,Arial,Verdana, monospace;
+	color: #777;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	cursor: default;
+	background-color:#eee;
+	
+	padding:6px;
+	position: absolute;
+	 
+	
+	box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.46);
+	 
+	
+	display:inline;
+	overflow: initial;
+	
+}
+
+.wnd_title{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin:-7px -6px 2px -6px;
+	padding:10px;
+	background-color:#404040;
+	color:#eee;
+	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.wnd_body{
+	overflow: auto; 
+}
+ 
+.wnd_body::-webkit-scrollbar {
+	max-width: 12px;
+	max-height: 12px;
+	background-color: #eee;
+}
+
+.wnd_body::-webkit-scrollbar-thumb
+{
+	border-radius: 2px;
+	-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.4);
+	background-color: #ccc;
+}
+
+.wnd_icon_div{
+	margin-top:-5px;
+	float:right;
+	width:72px;
+	height:21px;
+}
+.wnd_body::-webkit-scrollbar-corner, .wnd_body::-webkit-resizer{ 
+	background-color: #eee;
+}
+
+.wnd_icon{
+	margin-left:1px;
+	width:21px;
+	height:21px;
+	display:inline-block;
+	background: url('../res/ico_window.png');
+}
+
+.wnd_resizer{
+	position:absolute;
+}

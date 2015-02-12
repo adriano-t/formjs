@@ -79,15 +79,14 @@ Toolbar.prototype.addElement = function(icon, text, callback, contextmenu){
 					this.className = "tb_element_hover";
 					spanCtx.className = "tb_context_dropdown_selected";
 					
-					var pos = FormUtils.getElementPosition(this);
+					var pos = FormJS.getElementPosition(this);
 					contextmenu.show(pos.x, pos.y+this.offsetHeight, true);
 					if(toolbar.selectedElement)
 						toolbar.selectedElement.setSelected(false);
 						
 					toolbar.selectedElement = this;
 					toolbar.waitNextClick = true;
-				}else{
-					console.log(this, "Closed Context");
+				}else{ 
 					this.className = "tb_element_hover";
 					spanCtx.className = "tb_context_dropdown_hover";
 					this.isClickable = false;

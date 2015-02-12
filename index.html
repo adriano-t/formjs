@@ -3,20 +3,40 @@
 <head>
 	<title>FormJS</title>
 	
-	<script language="javascript" src="js/utils.js" ></script> 
+	<script language="javascript" src="js/formjs.js" ></script> 
 	<script language="javascript" src="js/toolbar.js" ></script> 
 	<script language="javascript" src="js/contextmenu.js" ></script> 
 	<script language="javascript" src="js/treeview.js" ></script> 
+	<script language="javascript" src="js/windows.js" ></script> 
 	
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="css/toolbar.css" />
 	<link rel="stylesheet" type="text/css" href="css/contextmenu.css" />
 	<link rel="stylesheet" type="text/css" href="css/treeview.css" />
+	<link rel="stylesheet" type="text/css" href="css/windows.css" />
 	 
 </head>
 <body>
 
 <div id="test_div"></div>
+
+<div id="test_window">
+	<div class="wnd_title"></div>
+	<div class="wnd_body">
+		<div style="min-width:250px; background:white;">
+			Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum &egrave; considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assembl&ograve; per preparare un testo campione. &egrave; sopravvissuto non solo a pi&ugrave; di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni 60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e pi&ugrave; recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Ipsum.
+		</div>
+	</div>
+</div>
+
+<div id="test_window2">
+	<div class="wnd_title"></div>
+	<div class="wnd_body">
+		<div style="min-width:250px; background:white;">
+			Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum &egrave; considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assembl&ograve; per preparare un testo campione. &egrave; sopravvissuto non solo a pi&ugrave; di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni 60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e pi&ugrave; recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Lorem Ipsum &egrave; un testo segnaposto utilizzato nel settore della  Ipsum.
+		</div>
+	</div>
+</div>
 
 
 <script>
@@ -139,6 +159,18 @@ document.body.onload = function(){
 	tree.populate();
 	tree.DOM.style.width = "150px";
 	tree.DOM.style.height = "300px";
+	
+	
+	/********************************
+	********** Window Test **********
+	********************************/
+	
+	var d = document.getElementById("test_window");
+	new WindowJS(d, "Window with cofandina", [true, true, true]);
+
+	var d = document.getElementById("test_window2");
+	(new WindowJS(d, "Window with cofandina", [true, true, true])).setPosition(200, 90);
+
 }
 
 
