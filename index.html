@@ -155,10 +155,6 @@ document.body.onload = function(){
 		node.locked = true;
 	}
 	
-	div.appendChild(tree.DOM);
-	tree.populate();
-	tree.DOM.style.width = "150px";
-	tree.DOM.style.height = "300px";
 	
 	
 	/********************************
@@ -166,11 +162,17 @@ document.body.onload = function(){
 	********************************/
 	
 	var d = document.getElementById("test_window");
-	new WindowJS(d, "Window with cofandina", [true, true, true]);
-
+	var win1 = new WindowJS(d, "Window with cofandina", [true, true, true]);
+	//win1.DOMBody.appendChild();
 	var d = document.getElementById("test_window2");
 	(new WindowJS(d, "Window with cofandina", [true, true, true])).setPosition(200, 90);
 
+	win1.DOMBody.innerHTML = "";
+	win1.DOMBody.appendChild(tree.DOM);
+	tree.populate();
+	tree.DOM.style.width = "150px";
+	tree.DOM.style.height = "300px";
+	
 }
 
 
