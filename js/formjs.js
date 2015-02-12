@@ -2,6 +2,7 @@
 FormJS = { 
 	windowFocused : null,
 	windows : [],
+	baseZIndex: 1,
 	
 	setWindow : function(win){
 		if(this.windowFocused)
@@ -11,6 +12,13 @@ FormJS = {
 		//make all windows unselectable
 		for(var i = 0; i < this.windows.length; i++){
 			this.setSelectable(this.windows[i].DOM, false);
+		}
+		
+		this.windows.splice(this.windows.indexOf(win), 1);
+		this.windows.push(win);
+		
+		for(var i = 0; i < this.windows.length; i++){
+			this.windows[i].DOM.style.zIndex = this.baseZIndex + i;
 		}
 		
 		win.focus();

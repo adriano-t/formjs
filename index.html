@@ -44,6 +44,12 @@ document.body.onload = function(){
 	//Get the div element
 	var div = document.getElementById("test_div");
 
+	
+	
+	
+	/********************************
+	******** Context menu 1 *********
+	********************************/
 	var submenu2 = new Contextmenu();
 	submenu2.addElement( "res/icons/ico_add.png", "Add", function(){
 		alert("Added!");
@@ -53,11 +59,16 @@ document.body.onload = function(){
 		alert("Moved Down!");
 	});
 	
-	var submenu = new Contextmenu();
-	submenu.addElement( "res/icons/ico_file.png", "Show Document", function(){
-		
-	});
 	
+	/********************************
+	******** Context menu 2 *********
+	********************************/
+	var submenu = new Contextmenu();
+	submenu.addElement( "res/icons/ico_file.png", "Show Document", function(){});
+	
+	/********************************
+	******** Context menu 3 *********
+	********************************/
 	var mainmenu = new Contextmenu();
 	
 	mainmenu.addElement( "res/icons/ico_newfile.png", "View file",function(){
@@ -77,32 +88,31 @@ document.body.onload = function(){
 	
 	});
 	
-	//Create a treeview
+	
+	
+	/********************************
+	********* Toolbar Test **********
+	********************************/
+
 	var toolbar = new Toolbar();
-	 
-	
-	//New file 
-	
+
+	//add an element
 	toolbar.addElement(
-		"", "File",
-		null,
-		mainmenu
+		"",		 //icon
+		"File",  //text
+		null,	 //onclick function
+		mainmenu //context menu
 	);
 	
-		
-	//Load
 	toolbar.addElement(
 		"res/icons/ico_folder.png",
 		"Load",
 		function(){}
 	);
 		
-	//Separator
+	//toolbar separator
 	toolbar.addSeparator();
 	
-	
-	//Arrow
-	var subMenu = {a:true}
 	toolbar.addElement(
 		"res/icons/ico_save.png",
 		"Save",
@@ -110,8 +120,6 @@ document.body.onload = function(){
 		submenu2
 	);
 	
-	
-	//Add
 	toolbar.addElement(
 		"res/icons/ico_selection.png",
 		"Select",
@@ -130,6 +138,12 @@ document.body.onload = function(){
 	);
 	
 	div.appendChild(toolbar.DOM);
+	
+	
+	
+	/********************************
+	******** Treeview Test **********
+	********************************/
 	
 	tree = new Treeview();
 	
@@ -172,7 +186,6 @@ document.body.onload = function(){
 	tree.populate();
 	tree.DOM.style.width = "150px";
 	tree.DOM.style.height = "300px";
-	
 }
 
 
