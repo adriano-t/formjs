@@ -1,5 +1,5 @@
 
-function WindowJS(element, title, icons, size){
+function WindowJS(element, titleText, icons, size){
 	this.formType = "window";
 	FormJS.windows.push(this);
 	this.elements = [];
@@ -10,12 +10,12 @@ function WindowJS(element, title, icons, size){
 	this.x = 0; this.y = 0;
 	this.width = 0; this.height = 0;
 	this.minWidth = 200; this.minHeight = 100;
-	if(FormJS.isElement(element)){
-		this.DOM = element;
+	if(!FormJS.isElement(element)){
+		element = document.createElement("div"); 
+		document.body.appendChild(element);
 	}
-	else{
-		this.DOM = document.createElement("div");
-	}
+	
+	this.DOM = element;
 	
 	
 	
@@ -37,14 +37,15 @@ function WindowJS(element, title, icons, size){
 	
 	//window title
 	var title = (divs.length >= 1) ? divs[0] : undefined;
-	
+ 
 	if(title && title.className != "wnd_title"){
 		title = document.createElement("div"); 
 		title.className = "wnd_title";
 		element.insertBefore(title, element.firstChild);
 	}
-	if(title.innerHTML.length == 0){
-		title.innerHTML = (typeof titleText == "string" )? titleText : "Window Title";
+	
+	if(titleText || (title && title.getElementsByTagName('a').length == 0)){
+		title.innerHTML = (typeof titleText == "string" )? ( "<a>" + titleText + "</a>" ): "<a>Window Title</a>";
 	}
 	this.DOMTitle = title;
 	
@@ -151,10 +152,10 @@ function WindowJS(element, title, icons, size){
 		div.className = "wnd_icon_div";
 		title.appendChild(div);
 	
-		if(icons[0]){
+		if(icons[2]){
 			div.appendChild(
-				this.creatIcon("0px 0px", "0px -21px", function(){
-				
+				this.creatIcon("-42px 0px", "-42px -21px", function(){
+					win.hide();
 				})
 			);
 		}
@@ -165,10 +166,10 @@ function WindowJS(element, title, icons, size){
 				})
 			);
 		}
-		if(icons[2]){
+		if(icons[0]){
 			div.appendChild(
-				this.creatIcon("-42px 0px", "-42px -21px", function(){
-					win.hide();
+				this.creatIcon("0px 0px", "0px -21px", function(){
+				
 				})
 			);
 		}
@@ -202,6 +203,7 @@ WindowJS.prototype.setPosition = function(x, y){
 
 WindowJS.prototype.setSize = function(width, height){
 	var padding = this.DOMpadding;
+	console.log(padding)
 	this.width = width;
 	this.height = height; 
 	
@@ -256,10 +258,17 @@ WindowJS.prototype.bringToFront = function(){
 	
 } 
 
+WindowJS.prototype.setTitle = function(){ 
+	this.DOMTitle.removeChild(this.DOMTitle.firstChild);
+	this.DOMTitle.insertBefore(this.DOMTitle.firstChild); 
+	
+} 
+
 WindowJS.prototype.updateResizers = function(){
 	//padding
 	var win = this;
 	var sz = this.DOMpadding.left;
+	console.log(sz);
 	var divs;
 	if(this.resizers.length == 0){
 		divs = []; 

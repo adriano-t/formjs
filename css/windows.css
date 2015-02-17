@@ -67,6 +67,7 @@
 	width:21px;
 	height:21px;
 	display:inline-block;
+	float:right;
 	background: url('../res/ico_window.png');
 }
 

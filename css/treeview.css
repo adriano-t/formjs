@@ -29,7 +29,7 @@
 	border: 1px solid transparent;
 	border-radius: 3px;
 	white-space: nowrap;
-	display:inline-block;
+	display:block;
 }
 
 .tv_li_over{ 
