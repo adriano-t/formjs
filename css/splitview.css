@@ -4,14 +4,14 @@
 } 
 
 .sv_panel_v {
-	background-color: rgba(255,0,0,0.2);
+	background-color: rgba(255,0,0,0.1);
 	float: left;
     position: relative; 
     height: 100%;
 }
 
 .sv_panel_h {
-	background-color: rgba(0,255,0,0.2);
+	background-color: rgba(0,255,0,0.1);
 	overflow: auto;
     position: relative;
 	width:100%;

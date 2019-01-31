@@ -11,14 +11,11 @@ App = {
 			//Get the div element
 		var divWorkspace = document.getElementById("workspace");
 		var divToolbar = document.getElementById("toolbar");
-		
-
-		
-		
-		
-		/********************************
-		******** Context menu 1 *********
-		********************************/
+		 
+		 
+		//====================
+		// Context menu 1
+		//==================== 
 		var submenu2 = new Contextmenu();
 		submenu2.addElement(icon_plus , "Add", function(){
 			alert("Added!");
@@ -29,15 +26,15 @@ App = {
 		});
 		
 		
-		/********************************
-		******** Context menu 2 *********
-		********************************/
+		//====================
+		// Context menu 2
+		//==================== 
 		var submenu = new Contextmenu();
 		submenu.addElement( icon_newfile, "Show Document", function(){});
 		
-		/********************************
-		******** Context menu 3 *********
-		********************************/
+		//====================
+		// Context menu 3
+		//==================== 
 		var mainmenu = new Contextmenu();
 		
 		mainmenu.addElement(icon_newfile  , "View file",function(){
@@ -51,17 +48,16 @@ App = {
 		});
 		mainmenu.addElement(icon_arrows_lr, "Scale Bone", function(){
 		
-		});
-		
+		}); 
 		mainmenu.addElement(icon_copy, "Copy", function(){
 		
 		});
 		
 		
 		
-		/********************************
-		********* Toolbar Test **********
-		********************************/
+		//====================
+		// Toolbar Test  
+		//==================== 
 
 		var toolbar = new Toolbar();
 
@@ -110,9 +106,9 @@ App = {
 		
 		
 		
-		/********************************
-		******** Treeview Test **********
-		********************************/
+		//====================
+		// Treeview Test  
+		//==================== 
 		
 		tree = new Treeview();
 		
