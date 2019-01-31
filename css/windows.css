@@ -2,18 +2,17 @@
 .wnd_container{
 	font: 9pt "Helvetica", "Trebuchet MS",Tahoma,Arial,Verdana, monospace;
 	color: #777;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 	border-bottom-left-radius: 2px;
 	border-bottom-right-radius: 2px;
 	cursor: default;
 	background-color:#eee;
-	
-	padding:6px;
-	position: absolute;
 	 
+	position: absolute;
+	border: 3px solid #444;
 	
-	box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.46);
+	box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.46);
 	 
 	
 	display:inline;
@@ -22,11 +21,11 @@
 }
 
 .wnd_title{
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	margin:-7px -6px 2px -6px;
-	padding:10px;
-	background-color:#404040;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	 
+	padding:6px;
+	background-color:#444;
 	color:#eee;
 	
 	-webkit-user-select: none;

@@ -1,27 +1,40 @@
 <!doctype html>
 <html>
 <head>
-	<title>FormJS</title>
+	<title>Application</title>
 	
 	<script language="javascript" src="js/formjs.js" ></script> 
 	<script language="javascript" src="js/toolbar.js" ></script> 
 	<script language="javascript" src="js/contextmenu.js" ></script> 
 	<script language="javascript" src="js/treeview.js" ></script> 
 	<script language="javascript" src="js/windows.js" ></script> 
+	<script language="javascript" src="js/utils.js" ></script> 
+	<script language="javascript" src="js/icons.js" ></script> 
+	<script language="javascript" src="js/splitview.js" ></script> 
+	<script language="javascript" src="js/main.js" ></script> 
 	
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="css/toolbar.css" />
 	<link rel="stylesheet" type="text/css" href="css/contextmenu.css" />
 	<link rel="stylesheet" type="text/css" href="css/treeview.css" />
 	<link rel="stylesheet" type="text/css" href="css/windows.css" />
+	<link rel="stylesheet" type="text/css" href="css/splitview.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	
+	<link rel="shortcut icon" href="./res/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="./res/favicon.ico" type="image/x-icon">
 	 
 </head>
 <body>
 
-<div id="test_div"></div>
+<div id="windowcontent">
+	<header id="toolbar"></header>
+	<div id="workspace"></div>
+	<footer id="footer">FormJS - Created by Adriano Tumminelli</footer>
+</div>
 
 
-<div id="test_window">
+<div id="test_window" style = "visibility:hidden;">
 	<div class="wnd_title"><a>Awesome Window</a></div>
 	<div class="wnd_body">
 		<div style="min-width:250px; background:white;">
@@ -30,162 +43,7 @@
 	</div>
 </div>
 
-
-<script>
-document.body.onload = function(){
-	//Get the div element
-	var div = document.getElementById("test_div");
-
-	
-	
-	
-	/********************************
-	******** Context menu 1 *********
-	********************************/
-	var submenu2 = new Contextmenu();
-	submenu2.addElement( "res/icons/ico_add.png", "Add", function(){
-		alert("Added!");
-	});
-	submenu2.addSeparator();
-	submenu2.addElement( "res/icons/ico_arrow_down.png", "Move Down", function(){
-		alert("Moved Down!");
-	});
-	
-	
-	/********************************
-	******** Context menu 2 *********
-	********************************/
-	var submenu = new Contextmenu();
-	submenu.addElement( "res/icons/ico_file.png", "Show Document", function(){});
-	
-	/********************************
-	******** Context menu 3 *********
-	********************************/
-	var mainmenu = new Contextmenu();
-	
-	mainmenu.addElement( "res/icons/ico_newfile.png", "View file",function(){
-	
-	}, submenu);
-	mainmenu.addElement( "res/icons/ico_paste.png", "Paste", function(){
-	
-	});
-	mainmenu.addElement( "res/icons/ico_move.png", "Move Bone", function(){
-	
-	});
-	mainmenu.addElement( "res/icons/ico_length.png", "Scale Bone", function(){
-	
-	});
-	
-	mainmenu.addElement("res/icons/ico_copy.png", "Copy", function(){
-	
-	});
-	
-	
-	
-	/********************************
-	********* Toolbar Test **********
-	********************************/
-
-	var toolbar = new Toolbar();
-
-	//add an element
-	toolbar.addElement(
-		"",		 //icon
-		"File",  //text
-		null,	 //onclick function
-		mainmenu //context menu
-	);
-	
-	toolbar.addElement(
-		"res/icons/ico_folder.png",
-		"Load",
-		function(){}
-	);
-		
-	//toolbar separator
-	toolbar.addSeparator();
-	
-	toolbar.addElement(
-		"res/icons/ico_save.png",
-		"Save",
-		function(){ alert("Clicked Save!");},
-		submenu2
-	);
-	
-	toolbar.addElement(
-		"res/icons/ico_selection.png",
-		"Select",
-		function(){}
-	);
-	
-	toolbar.addSeparator();
-	
-	
-	//only icons
-	toolbar.addElement( "res/icons/ico_rotate.png", "",
-		function(){}
-	);
-	toolbar.addElement( "res/icons/ico_folder_other.png", "",
-		function(){}
-	);
-	
-	div.appendChild(toolbar.DOM);
-	
-	
-	
-	/********************************
-	******** Treeview Test **********
-	********************************/
-	
-	tree = new Treeview();
-	
-	images = ["res/icons/ico_file.png", "res/icons/ico_newfile.png", "res/icons/ico_paste.png"];
-	names = ["spr_scarpallaccia", "spr_antani",  "spr_tapioco",  "spr_tarapia",  "spr_prematurata",  "spr_allacciascarpa"];
-	folders = ["Animations", "Sprites",  "Rooms",  "Backgrounds",  "Sounds",  "Settings"];
-	groups = ["Group", "Player",  "Glare", "Old",  "Temp",  "Mascetti"];
-	
-	for(var i=0; i< 5; i++){
-		var node = new TreeNode(choose(folders), "res/icons/ico_folder.png");
-		
-		for(var j=0; j< 5; j++){
-			var node2 = new TreeNode(choose(groups), "res/icons/ico_folder_other.png", true);
-			
-			for(var k=0; k< 5; k++){
-				var node3 = new TreeNode(choose(names), choose(images) , true, mainmenu);
-				node2.addChild(node3);
-			}
-		
-			node.addChild(node2);
-		}
-		tree.root.addChild(node);
-		node.locked = true;
-	}
-	
-	tree.populate();
-	tree.DOM.style.width = "150px";
-	tree.DOM.style.height = "300px";
-	
-	
-	/********************************
-	********** Window Test **********
-	********************************/
-	
-	
-	var elem = document.getElementById("test_window");
-	win1 = new WindowJS(elem, "Window with cofandina", [true, true, true]);
-		
-	
-	win2 = new WindowJS(null, null, [false, false, true]); 
-	win2.setPosition(200, 90);
-	win2.DOMBody.appendChild(tree.DOM);
-}
-
-
-function choose(elements){
-	return elements[Math.floor(Math.random() *  elements.length)];
-}
-
-</script>
+ 
 
 </body>
 </html>

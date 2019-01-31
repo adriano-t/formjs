@@ -88,16 +88,23 @@ function WindowJS(element, titleText, icons, size){
 	
 	
 	window.addEventListener("mouseup", function(){
-		 
 		win.drag = false;
 		win.resizing = false;
 	}, false);
 	
+	window.addEventListener("resize", function(){ 
+		win.setPosition(
+			FormJS.clamp(win.x , - win.width + 30, window.innerWidth  - 30),
+			FormJS.clamp(win.y, 0, window.innerHeight  - 30)
+		);
+	}, false);
+	
 	window.addEventListener("mousemove", function(e){
 		if(win.drag && win.canDrag){
+			console.log(e.clientWidth );
 			win.setPosition(
-				FormJS.clamp(e.clientX - win.px, 0, e.clientX - win.px + win.width),
-				FormJS.clamp(e.clientY - win.py, 0, e.clientY - win.py + win.width)
+				FormJS.clamp(e.clientX - win.px , - win.width + 30, window.innerWidth  - 30),
+				FormJS.clamp(e.clientY - win.py, 0, window.innerHeight  - 30)
 			);
 		}else{
 			win.drag = false; 
@@ -154,21 +161,21 @@ function WindowJS(element, titleText, icons, size){
 	
 		if(icons[2]){
 			div.appendChild(
-				this.creatIcon("-42px 0px", "-42px -21px", function(){
+				this.createIcon("-42px 0px", "-42px -21px", function(){
 					win.hide();
 				})
 			);
 		}
 		if(icons[1]){
 			div.appendChild(
-				this.creatIcon("-21px 0px", "-21px -21px", function(){
+				this.createIcon("-21px 0px", "-21px -21px", function(){
 					
 				})
 			);
 		}
 		if(icons[0]){
 			div.appendChild(
-				this.creatIcon("0px 0px", "0px -21px", function(){
+				this.createIcon("0px 0px", "0px -21px", function(){
 				
 				})
 			);
@@ -187,10 +194,12 @@ WindowJS.prototype.hide = function(){
 }
 WindowJS.prototype.focus = function(){ 
 	this.DOMTitle.style.backgroundColor = "#333";
+	this.DOM.style.borderColor = "#333";
 	FormJS.setSelectable(this.DOM, true);
 }
 WindowJS.prototype.blur = function(){
-	this.DOMTitle.style.backgroundColor = "#555";
+	this.DOMTitle.style.backgroundColor = "#444";
+	this.DOM.style.borderColor = "#444";
 }
 
 
@@ -202,8 +211,7 @@ WindowJS.prototype.setPosition = function(x, y){
 }
 
 WindowJS.prototype.setSize = function(width, height){
-	var padding = this.DOMpadding;
-	console.log(padding)
+	var padding = this.DOMpadding; 
 	this.width = width;
 	this.height = height; 
 	
@@ -221,7 +229,7 @@ WindowJS.prototype.setSize = function(width, height){
 
 
 
-WindowJS.prototype.creatIcon = function(backPos1, backPos2, clickEvent){
+WindowJS.prototype.createIcon = function(backPos1, backPos2, clickEvent){
 	
 	var win = this;
 	
@@ -266,9 +274,9 @@ WindowJS.prototype.setTitle = function(){
 
 WindowJS.prototype.updateResizers = function(){
 	//padding
+	var bsize = parseInt(getComputedStylePropertyValue(this.DOM, "border-width")); 
 	var win = this;
-	var sz = this.DOMpadding.left;
-	console.log(sz);
+	var sz = bsize * 3; 
 	var divs;
 	if(this.resizers.length == 0){
 		divs = []; 
@@ -303,22 +311,22 @@ WindowJS.prototype.updateResizers = function(){
 		divs = this.resizers;
 	} 
 	//corners
-	FormJS.setPosition(divs[0], 0, 0);
-	FormJS.setPosition(divs[2], this.width-sz, 0);
-	FormJS.setPosition(divs[4], this.width-sz, this.height-sz);
-	FormJS.setPosition(divs[6], 0			 , this.height-sz);
+	FormJS.setPosition(divs[0], -sz, -sz);
+	FormJS.setPosition(divs[2], this.width-sz + sz, -sz);
+	FormJS.setPosition(divs[4], this.width-sz + sz, this.height-sz + sz);
+	FormJS.setPosition(divs[6], -sz			 , this.height-sz + sz);
 	
 	//top side
-	FormJS.setPosition(divs[1], sz, 0);
+	FormJS.setPosition(divs[1], sz, -sz);
 	FormJS.setSize(divs[1], this.width - sz*2, sz);
 	//right side
-	FormJS.setPosition(divs[3], this.width - sz, sz);
+	FormJS.setPosition(divs[3], this.width - sz + sz, sz );
 	FormJS.setSize(divs[3], sz, this.height - sz*2);
 	//bottom side
-	FormJS.setPosition(divs[5], sz, this.height - sz);
+	FormJS.setPosition(divs[5], sz , this.height - sz + sz);
 	FormJS.setSize(divs[5], this.width - sz*2, sz);
 	//left side
-	FormJS.setPosition(divs[7], 0, sz);
+	FormJS.setPosition(divs[7], -sz, sz  );
 	FormJS.setSize(divs[7], sz, this.height - sz*2);
 
 	

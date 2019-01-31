@@ -110,12 +110,13 @@ Contextmenu.prototype.addElement = function(icon, text, callback, contextmenu){
 	
 	//add the element into the array
 	this.elements.push(element);
-	
+	 
 	//set icon
-	if(typeof icon == "string"){
+	if(icon){
 		var spanIcon = document.createElement("div");
 		spanIcon.className = "cm_icon";
-		spanIcon.style.backgroundImage="url('" + icon + "')";
+		icon.set(spanIcon);
+		//spanIcon.style.backgroundImage="url('" + icon + "')";
 		el.appendChild(spanIcon);
 	}
 	

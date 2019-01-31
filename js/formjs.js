@@ -43,9 +43,7 @@ FormJS = {
 		);
 	},
 	 
-	getElementPosition : function(element){
-		if(!element)
-			return {x:0, y:0};
+	getElementPosition : function(element){ 
 		var rect = element.getBoundingClientRect();
 		var scrollTop = document.documentElement.scrollTop?
 						document.documentElement.scrollTop:document.body.scrollTop;

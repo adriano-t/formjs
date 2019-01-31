@@ -1,0 +1,40 @@
+
+.sv_div {
+	height:100%;
+} 
+
+.sv_panel_v {
+	background-color: rgba(255,0,0,0.2);
+	float: left;
+    position: relative; 
+    height: 100%;
+}
+
+.sv_panel_h {
+	background-color: rgba(0,255,0,0.2);
+	overflow: auto;
+    position: relative;
+	width:100%;
+    height: 100%;
+}
+
+.sv_gutter {
+	background-color: #ccc;
+    float: left;
+    position: relative;
+}
+ 
+.sv_gutter.sv_gutter-vertical {
+    cursor: ns-resize;
+	border-top:1px solid #a5a5a5;
+	border-bottom:1px solid #a5a5a5;
+    width: 100%;
+    height: 4px;
+}
+.sv_gutter.sv_gutter-horizontal {
+    cursor: ew-resize;
+	border-left:1px solid #a5a5a5;
+	border-right:1px solid #a5a5a5;
+    width: 4px;
+    height: 100%;
+}

@@ -40,10 +40,10 @@ Toolbar.prototype.addElement = function(icon, text, callback, contextmenu){
 	this.elements.push(element);
 	
 	//set icon
-	if(typeof icon == "string" && icon.length > 0){
+	if(icon){
 		var spanIcon = document.createElement("div");
 		spanIcon.className = "tb_icon";
-		spanIcon.style.backgroundImage="url('" + icon + "')";
+		icon.set(spanIcon); 
 		el.appendChild(spanIcon);
 	}
 	
@@ -73,8 +73,7 @@ Toolbar.prototype.addElement = function(icon, text, callback, contextmenu){
 		
 		el.setSelected = function(sel){
 			if(sel){
-				if(!this.isSelected){
-					console.log(this, "Selected");
+				if(!this.isSelected){ 
 					this.isSelected = true;
 					this.className = "tb_element_hover";
 					spanCtx.className = "tb_context_dropdown_selected";
@@ -94,8 +93,7 @@ Toolbar.prototype.addElement = function(icon, text, callback, contextmenu){
 				}
 			}
 			else{
-				if(this.isSelected){
-					console.log(this, "Selected Another");
+				if(this.isSelected){ 
 					this.className = "tb_element";
 					spanCtx.className = "tb_context_dropdown";
 					this.isSelected = false;

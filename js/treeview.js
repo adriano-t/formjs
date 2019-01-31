@@ -1,10 +1,4 @@
-
-/*
-*******************************
-**** Contextmenu container  ***
-*******************************
-*/
-
+ 
 function Treeview(name){
 	this.formType = "treeview";
 	this.root = new TreeNode("root");
@@ -114,8 +108,9 @@ Treeview.prototype.recursiveInstance = function(node){
 			var iconSpan = document.createElement("span");
 			iconSpan.className = "tv_icon";
 			iconSpan.node = childNode;
-			if(childNode.icon && childNode.icon.length > 0)
-				iconSpan.style.background = "url('"+childNode.icon+"')";
+			if(childNode.icon) 
+				childNode.icon.set(iconSpan); 
+			
 			li.appendChild(iconSpan);
 			childNode.iconSpan = iconSpan;
 			

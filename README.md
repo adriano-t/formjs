@@ -1,5 +1,5 @@
 # formjs
-Javascript Form Library
+Javascript Paint
 
 # live demo
-http://tizzio.github.io/formjs
+http://tizzio.github.io/paintjs
